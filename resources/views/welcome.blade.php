@@ -3,7 +3,10 @@
     <div class="container text-center">
         <div class="row">
             <div class="col">
-                HOME PAGE FUMETTI
+                <a href="/" class="nav-link text-dark">
+                    HOME PAGE FUMETTI
+                </a>
+
             </div>
         </div>
     </div>

@@ -33,8 +33,12 @@
             <ul class="nav nav-pills">
                 {{-- <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li> --}}
                 <li class="nav-item"><a href="/" class="nav-link text-dark">Home</a></li>
-                <li class="nav-item"><a href="{{ route('comics.index') }}" class="nav-link text-dark"> List of
-                        Comics
+                <li class="nav-item"><a href="{{ route('comics.index') }}" class="nav-link text-dark"> Lista dei Fumetti
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('comics.create') }}" class="nav-link text-dark">
+                        Crea il tuo fumetto
                     </a>
                 </li>
 

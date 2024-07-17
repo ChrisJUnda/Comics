@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateComicRequest;
 use App\Models\Comic;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ComicController extends Controller
 {
@@ -29,21 +31,26 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UpdateComicRequest $request)
     {
-        $data = $request->all();
+        // $data = $request->all();
 
-        $request->validate([
-            'title' => 'required|min:5|max:100',
-            'description' => 'required|min:5|max:1000',
-            'thumb' => 'required|min:5|max:512',
-            'price' => 'required',
-            'series' => 'required|min:5|max:50',
-            'sale_date' => 'required',
-            'type' => 'required|min:5|max:50',
-            'artists' => 'required',
-            'writers' => 'required',
-        ]);
+        // $request->validate([
+        //     'title' => 'required|min:5|max:100',
+        //     'description' => 'required|min:5|max:1000',
+        //     'thumb' => 'required|min:5|max:512',
+        //     'price' => 'required',
+        //     'series' => 'required|min:5|max:50',
+        //     'sale_date' => 'required',
+        //     'type' => 'required|min:5|max:50',
+        //     'artists' => 'required',
+        //     'writers' => 'required',
+        // ]);
+        // $data = $this->validation($request->all());
+
+        $data = $request->validated();
+
+
 
 
         // $data = $request->validated();
@@ -137,5 +144,24 @@ class ComicController extends Controller
         $comic->delete();
         return redirect()->route('comics.index');
         // dd('$comic');
+    }
+
+    public function validation($data)
+    {
+        $validation = Validator::make($data, [
+            'title' => 'required|min:5|max:100',
+            'description' => 'required|min:5|max:1000',
+            'thumb' => 'required|min:5|max:512',
+            'price' => 'required',
+            'series' => 'required|min:5|max:50',
+            'sale_date' => 'required',
+            'type' => 'required|min:5|max:50',
+            'artists' => 'required',
+            'writers' => 'required',
+        ], [
+            'title.required' => 'Il Titolo è Obbligatorio',
+            'thumb.required' => 'Rispetta il valore minimo'
+        ])->validate();
+        return $validation;
     }
 }

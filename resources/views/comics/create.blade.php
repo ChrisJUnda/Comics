@@ -6,6 +6,19 @@
                 <h1>
                     Crea un fumetto
                 </h1>
+                <div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>
+                                        {{ $error }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
             </div>
             <div class="col-12 text-start">
                 <form action="{{ route('comics.store') }}" method="POST">
@@ -13,7 +26,8 @@
 
                     <div class="mb-3">
                         <label class="form-label">Nome Fumetto</label>
-                        <input type="text" class="form-control" placeholder="Inserisci il nome del fumetto" name="title">
+                        <input type="text" class="form-control" placeholder="Inserisci il nome del fumetto"
+                            name="title">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Inserisci la descrizione</label>

@@ -9,6 +9,8 @@
             </div>
             <div class="col-12 text-start">
                 <form action="{{ route('comics.store') }}" method="POST">
+                    @csrf
+
                     <div class="mb-3">
                         <label class="form-label">Nome Fumetto</label>
                         <input type="text" class="form-control" placeholder="Inserisci il nome del fumetto" name="title">
@@ -36,8 +38,14 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Inserisci la tipologia di libro</label>
-                        <input type="text" class="form-control" placeholder="Inserisci la tipologia di libro"
-                            name="type">
+                        <select name="type" class="form-select">
+                            <option>
+                                Comic book
+                            </option>
+                            <option>
+                                graphic novel
+                            </option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Inserisci gli artisti</label>

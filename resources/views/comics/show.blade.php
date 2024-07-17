@@ -52,6 +52,10 @@
                         Torna alla Lista di Fumetti
                     </a>
                 </button>
+                <button type="button" class="btn btn-primary ">
+                    <a href="{{ route('comics.edit', $comics->id) }}" class="nav-link text-white">Modifica Fumetto</a>
+                </button>
+
 
             </div>
         </div>
